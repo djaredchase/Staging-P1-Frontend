@@ -19,6 +19,7 @@ const useStyles = makeStyles({
     accordion: {
         width: '65vw',
         marginTop: '15px',
+        marginBottom: '15px',
         marginLeft: '10px',
         backgroundColor: '#66686E'
     },
@@ -51,7 +52,8 @@ const useStyles = makeStyles({
     },
     drawer: {
         backgroundColor: 'green',
-        width: '200px'
+        width: '200px',
+        marginTop: '64px'
     },
     cardMedia: {
         height: '250px',
@@ -110,7 +112,7 @@ export const TrainerComponent: React.FC = () => {
                 anchor='left'
                 open={open}
                 >
-                    <Button onClick={handleDrawerClose}>close</Button>
+                <Button onClick={handleDrawerClose}>close</Button>
             </Drawer>
             <Box className={classes.boxRoot} display='flex' flexDirection='row' justifyContent='center' flexWrap='wrap'>
                 <Box>

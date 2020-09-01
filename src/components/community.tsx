@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, Toolbar, Typography, Box, TextField, FormControl, IconButton, Drawer } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { PostComponent } from './post';
 
 const useStyles = makeStyles({
     root: {
@@ -22,14 +23,15 @@ const useStyles = makeStyles({
         width: '80%',
         marginLeft: '20%',
         margin: 0,
-        padding: 0
+        padding: 0,
+        zIndex: 1
     },
     toolbarText: {
         position: 'absolute'
     },
     toolbarSearch: {
         position: 'absolute',
-        right: '24px'
+        right: '12px'
     },
     drawer: {
         backgroundColor: 'green',
@@ -37,7 +39,7 @@ const useStyles = makeStyles({
         marginTop: '65px'
     },
     main: {
-        backgroundColor: 'red',
+        //backgroundColor: 'red',
         width: '80%',
         marginLeft: '20%'
     }
@@ -69,7 +71,7 @@ export const CommunityComponent: React.FC = () => {
 
             </Drawer>
             <div className={classes.main}>
-                main
+                <PostComponent/>
                 <br/>
                 <br/>
                 <br/>

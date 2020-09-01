@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     },
     cardRoot: {
         width: '25vw',
-        height: '200px',
+        //height: '200px',
         marginTop: '20px',
         marginBottom: '20px',
         backgroundColor: 'green'
