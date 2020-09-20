@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, Toolbar, Typography, Box, TextField, FormControl, IconButton, Drawer } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { PostComponent } from './post';
+import * as postRemote from '../remotes/post.remote';
+import { Post } from '../models/post';
 
 const useStyles = makeStyles({
     root: {
         position: 'relative',
         paddingTop: '65px',
         backgroundColor: '#1F1F1F',
-        minHeight: '100%'
+        height: '100vh'
     },
     banner: {
         height: '250px',
@@ -47,6 +49,21 @@ const useStyles = makeStyles({
 
 export const CommunityComponent: React.FC = () => {
     const classes = useStyles();
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    useEffect(() => {
+        const loadPosts = async () => {
+            let postArray;
+            try {
+                postArray = await postRemote.getAllPosts();
+            } catch {
+                return;
+            }
+            console.log(postArray);
+            setPosts(postArray);
+        }
+        loadPosts();
+    }, [])
 
     return(
         <div className={classes.root}>
@@ -71,41 +88,7 @@ export const CommunityComponent: React.FC = () => {
 
             </Drawer>
             <div className={classes.main}>
-                <PostComponent/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <PostComponent posts={posts}/>
             </div>
         </div>
     );

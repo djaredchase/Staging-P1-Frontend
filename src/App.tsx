@@ -5,6 +5,8 @@ import { NavbarComponent } from './components/navbar';
 import { CommunityComponent } from './components/community';
 import { ProfileComponent } from './components/profile';
 import { TrainerComponent } from './components/trainers';
+import { LoginComponent } from './components/login';
+import { RegisterComponent } from './components/register';
 
 function App() {
   return (
@@ -13,6 +15,12 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <HomeComponent/>
+        </Route>
+        <Route exact path='/login'>
+          <LoginComponent/>
+        </Route>
+        <Route exact path='/register'>
+          <RegisterComponent/>
         </Route>
         <Route exact path='/community'>
           <CommunityComponent/>

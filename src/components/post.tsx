@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Button, Avatar, makeStyles, Divider } from '@material-ui/core';
+import { Post } from '../models/post';
 
 const useStyles = makeStyles({
     card: {
@@ -17,35 +18,41 @@ const useStyles = makeStyles({
     }
 });
 
-export const PostComponent: React.FC = () => {
+interface PostComponentProps {
+    posts: Post[];
+}
+
+export const PostComponent: React.FC<PostComponentProps> = (props) => {
     const classes = useStyles();
 
     return(
         <div>
-            <Card className={classes.card}>
-                <CardHeader 
-                    avatar={
-                    <Avatar>Pic</Avatar>}
-                    title='Fname Lname'
-                    subheader='Date Posted'
-                    classes={{
-                        subheader: classes.subheader
-                    }} />
-                <Divider/>
-                <CardMedia>
-                    Media content here
-                </CardMedia>
-                <Divider/>
-                <CardContent>
-                    This will be the actual post text content
-                </CardContent>
-                <Divider/>
-                <CardActions>
-                    <Button variant='contained'>
-                        Comment
-                    </Button>
-                </CardActions>
-            </Card>
+            {props.posts.map(post =>
+                <Card key={post.id} className={classes.card}>
+                    <CardHeader 
+                        avatar={
+                        <Avatar>Pic</Avatar>}
+                        title={post.author.firstName + ' ' + post.author.lastName}
+                        subheader={post.postedDate}
+                        classes={{
+                            subheader: classes.subheader
+                        }} />
+                    <Divider/>
+                    <CardMedia>
+                        {post.media}
+                    </CardMedia>
+                    <Divider/>
+                    <CardContent>
+                        {post.content}
+                    </CardContent>
+                    <Divider/>
+                    <CardActions>
+                        <Button variant='contained'>
+                            Comment
+                        </Button>
+                    </CardActions>
+                </Card>
+            )}
         </div>
     );
 }
