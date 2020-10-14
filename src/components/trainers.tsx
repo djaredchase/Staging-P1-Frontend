@@ -89,13 +89,12 @@ export const TrainerComponent: React.FC = () => {
             try {
                 userArray = await userRemote.getAllTrainers();
             }catch {
+                alert('error loading trainers');
                 return;
             }
-            console.log(userArray);
             setTrainers(userArray);
         }
         loadUsers();
-        console.log(user);
     }, []);
 
 

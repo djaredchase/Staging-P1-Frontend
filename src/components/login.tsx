@@ -1,7 +1,7 @@
 import { Button, Grid, makeStyles, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Login } from '../models/login';
 import { User } from '../models/user';
 import { loginUser } from '../remotes/auth.remote';
@@ -37,6 +37,7 @@ export const LoginComponent: React.FC = () => {
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
 
     let response: any;
     const handleSubmit = async () => {
@@ -53,7 +54,7 @@ export const LoginComponent: React.FC = () => {
             localStorage.setItem('token', response.accessToken);
             //dispatch action with user passed in to set authenticated user state in store
             dispatch(login(response.user));
-            return <Link to='/'/>;
+            history.push('/');
         }catch {
             alert('Error on login. Check credentials and try again.');
         }

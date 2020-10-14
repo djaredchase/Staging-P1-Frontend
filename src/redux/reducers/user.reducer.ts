@@ -29,6 +29,9 @@ export const userReducer = (state: UserState = initialState, action: UserAction)
                 role: action.payload.role.role,
                 category: action.payload.category.category
             }
+        case 'LOGOUT':
+            console.log('action dispatched, clearing user in reducer');
+            return initialState;
         default:
             return state;
     }

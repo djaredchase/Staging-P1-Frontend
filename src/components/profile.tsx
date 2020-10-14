@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { makeStyles, Drawer, Button, Toolbar, Typography, Box } from '@material-ui/core';
+import { makeStyles, Drawer, Button, Toolbar, Typography, Box, IconButton } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { ProfilePostComponent } from './profile.post';
+import { useSelector, RootStateOrAny } from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -65,6 +66,7 @@ const useStyles = makeStyles({
 export const ProfileComponent: React.FC = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const user = useSelector((state: RootStateOrAny) => state.user);
 
     const handleOpen = () => {
         setOpen(!open);
@@ -77,12 +79,15 @@ export const ProfileComponent: React.FC = () => {
     return(
         <div className={classes.root}>
             <Toolbar className={classes.toolbar}>
-                <AccountCircleIcon className={classes.icon}/>
+                <IconButton className={classes.icon}>
+                    {user.firstName[0]}
+                </IconButton>
+                {/* <AccountCircleIcon className={classes.icon}/> */}
                 <Box className={classes.navName}>
-                    FName LName
+                    {user.firstName} {user.lastName}
                 </Box>
                 <Box className={classes.navEmail}>
-                    Email(optional)
+                    {user.email}
                 </Box>
                 <Box className={classes.navBio}>
                     Bio

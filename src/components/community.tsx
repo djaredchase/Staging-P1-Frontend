@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         position: 'relative',
         paddingTop: '65px',
         backgroundColor: '#1F1F1F',
-        height: '100vh'
+        minHeight: '100vh'
     },
     banner: {
         height: '250px',
@@ -59,7 +59,6 @@ export const CommunityComponent: React.FC = () => {
             } catch {
                 return;
             }
-            console.log(postArray);
             setPosts(postArray);
         }
         loadPosts();

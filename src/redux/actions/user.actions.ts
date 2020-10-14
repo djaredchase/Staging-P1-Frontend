@@ -7,7 +7,7 @@ export const login = (credentials: User) => {
     }
 }
 
-export const clearUser = () => {
+export const logout = () => {
     return {
         type: 'LOGOUT'
     }
